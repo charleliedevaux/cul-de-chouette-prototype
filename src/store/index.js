@@ -12,7 +12,6 @@ const reactModelStore = createStore(
 );
 
 // Juste pour debugguer, ne pas laisser en production.
-console.log('Store', reactModelStore);
 window.store = reactModelStore;
 
 export default reactModelStore;

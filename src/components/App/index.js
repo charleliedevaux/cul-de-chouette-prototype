@@ -2,24 +2,31 @@
  * Imports de dépendances
  */
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 /**
  * Imports locaux
  */
 // Composants React
-import VoteWidget from 'src/components/VoteWidget';
 // Données
 // Styles et assets
-import './app.sass';
 
 /**
  * Code
  */
-const App = ({ promo }) => {
+const App = () => {
   return <div id="app">
-    <h1 id="app-title">Modèle React</h1>
-    <p id="app-content"><em>Salut</em> {promo} !</p>
-    <VoteWidget />
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          {/* Composant initial */}
+        </Route>
+        <Route>
+          <Redirect to="/" />
+        </Route>
+
+      </Switch>
+    </Router>
   </div>;
 }
 
