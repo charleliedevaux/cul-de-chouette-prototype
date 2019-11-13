@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
  * Imports locaux
  */
 // Composants React
+import Rules from 'src/components/Rules';
 // Données
 // Styles et assets
 
@@ -27,6 +28,7 @@ const App = () => {
 
       </Switch>
     </Router>
+    <Rules />
   </div>;
 }
 
