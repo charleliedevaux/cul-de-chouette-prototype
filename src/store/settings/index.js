@@ -8,6 +8,12 @@ export default (state = initialState, action) => {
   console.log('reducer[settings] >>', action);
 
   switch (action.type) {
+    case actions.TOGGLE_RULES: {
+      return {
+        ...state, rules: !state.rules
+      };
+    }
+
     default: {
       return state;
     }
