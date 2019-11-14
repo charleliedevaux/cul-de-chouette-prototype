@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
  */
 // Composants React
 import Rules from 'src/components/Rules';
+import Header from 'src/components/Header';
 // Données
 // Styles et assets
 import './styles.sass';
@@ -18,6 +19,8 @@ import './styles.sass';
  */
 const App = () => {
   return <div id="app">
+    <Header />
+
     <Router>
       <Switch>
         <Route exact path="/">
@@ -26,12 +29,12 @@ const App = () => {
         <Route>
           <Redirect to="/" />
         </Route>
-
       </Switch>
     </Router>
+
     <Rules />
   </div>;
-}
+};
 
 /**
  * Export
