@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import Rules from 'src/components/Rules';
 // Données
 // Styles et assets
+import './styles.sass';
 
 /**
  * Code
