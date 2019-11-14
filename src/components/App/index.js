@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 // Composants React
 import Rules from 'src/components/Rules';
 import Header from 'src/components/Header';
+import Scoreboard from 'src/components/Scoreboard';
 // Données
 // Styles et assets
 import './styles.sass';
@@ -25,6 +26,9 @@ const App = () => {
       <Switch>
         <Route exact path="/">
           {/* Composant initial */}
+        </Route>
+        <Route exact path="/game">
+          <Scoreboard />
         </Route>
         <Route>
           <Redirect to="/" />
