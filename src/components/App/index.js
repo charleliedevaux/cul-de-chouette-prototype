@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import Rules from 'src/components/Rules';
 import Header from 'src/components/Header';
 import Scoreboard from 'src/components/Scoreboard';
+import NewGame from 'src/components/NewGame';
 // Données
 // Styles et assets
 import './styles.sass';
@@ -25,7 +26,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-          {/* Composant initial */}
+          <NewGame />
         </Route>
         <Route exact path="/game">
           <Scoreboard />
