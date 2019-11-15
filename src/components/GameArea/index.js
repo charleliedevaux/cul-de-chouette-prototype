@@ -8,8 +8,8 @@ import './styles.sass';
 // Stratégie de lecture depuis le store/state : on extrait des informations
 // depuis le state global de l'application.
 const mapStateToProps = (state) => {
-  const { dice, currentTurn, rollStatus } = state.game;
-  return { dice, currentTurn, rollStatus };
+  const { dice, currentTurn, rollStatus, results } = state.game;
+  return { dice, currentTurn, rollStatus, results };
 };
 
 // Stratégie d'écriture dans le state global de l'application.
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 // Composant de présentation
-const GameArea = ({ currentTurn, rollStatus, dice, handleClick }) => {
+const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
 
   const firstDie = dice.firstDie;
   const secondDie = dice.secondDie;
@@ -46,47 +46,6 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClick }) => {
         return '';
       }
     }
-  };
-
-  const checkResults = (a, b, c) => {
-    let results = {};
-    if (a === b && b === c) {
-      results = {
-        combinationName: 'Cul de Chouette !',
-        scoringNumber: a
-      };
-    }
-    if (b + c === a) {
-      results = {
-        combinationName: `Velute de ${a}`,
-        scoringNumber: a
-      };
-    }
-    if (a + c === b) {
-      results = {
-        combinationName: `Velute de ${b}`,
-        scoringNumber: b
-      };
-    }
-    if (a + b === c) {
-      results = {
-        combinationName: `Velute de ${c}`,
-        scoringNumber: c
-      };
-    }
-    if (a === b || a === c) {
-      results = {
-        combinationName: `Chouette de ${a}`,
-        scoringNumber: a
-      };
-    }
-    if (b === c) {
-      results = {
-        combinationName: `Chouette de ${b}`,
-        scoringNumber: b
-      };
-    }
-    return results;
   };
 
   return <div className="game-area">
@@ -118,7 +77,7 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClick }) => {
     </div>
     <div className="results-zone">
       <h2>Results</h2>
-      <p>{rollStatus && checkResults(firstDie, secondDie, thirdDie).combinationName}</p>
+      <p>{rollStatus && results.combinationName}</p>
     </div>
   </div>;
 };
