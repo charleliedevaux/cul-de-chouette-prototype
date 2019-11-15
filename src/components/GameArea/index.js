@@ -75,10 +75,11 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
       }
 
     </div>
-    <div className="results-zone">
-      <h2>Results</h2>
-      <p>{rollStatus && results.combinationName}</p>
-    </div>
+    {rollStatus && <div className="results-zone">
+      <h2 className="results-title">{results.combinationName}</h2>
+      <p className="turn-score">+ {results.turnScore}pts</p>
+      <button type="button" className="continue-button">Passer les dés</button>
+    </div>}
   </div>;
 };
 
