@@ -2,16 +2,19 @@ import { scores as actions } from 'src/store/actions';
 
 const initialState = {
   scores: {
-    firstPlayer: 72,
-    secondPlayer: 234,
-    thirdPlayer: 4
+    firstPlayer: 0,
+    secondPlayer: 0,
+    thirdPlayer: 0
   }
 };
 
 export default (state = initialState, action) => {
-  console.log('reducer[scores] >>', action);
-
   switch (action.type) {
+    case actions.RESET_SCORES: {
+      return {
+        ...state, scores: { firstPlayer: 0, secondPlayer: 0, thirdPlayer: 0 }
+      };
+    }
     default: {
       return state;
     }

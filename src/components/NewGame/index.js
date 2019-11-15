@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-import { startGame } from 'src/store/game/actions';
+import { resetScores } from 'src/store/scores/actions';
 import './styles.sass';
 
 
@@ -9,10 +10,11 @@ import './styles.sass';
 // La fonction dispatchers retourne un objet, chaque propriété va devenir
 // un prop passée à un composant de présentation qui pourra utiliser les
 // fonctions définies pour déclencher des dispatch().
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
   return {
     handleClick: (event) => {
-      dispatch(startGame());
+      dispatch(resetScores());
+      props.history.push('/game');
     }
   };
 };
@@ -27,9 +29,9 @@ const NewGame = ({ handleClick }) => {
 };
 
 
-const NewGameContainer = connect(
+const NewGameContainer = withRouter(connect(
   null,
   mapDispatchToProps
-)(NewGame);
+)(NewGame));
 
 export default NewGameContainer;

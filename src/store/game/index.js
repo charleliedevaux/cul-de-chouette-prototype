@@ -9,14 +9,7 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log('reducer[game] >>', action);
-
   switch (action.type) {
-    case actions.START_GAME: {
-      // TODO: launch reset scores action, then go to game view.
-      console.log('game started');
-      return state;
-    }
     default: {
       return state;
     }
