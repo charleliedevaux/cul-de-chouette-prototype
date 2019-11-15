@@ -27,7 +27,7 @@ const GameArea = ({ handleClick }) => {
   return <div className="game-area">
     <div className="action-zone">
       <h2 className="action-title">C'est votre tour</h2>
-      <img className="action-img" alt="Cup with rolling dice" src="" />
+      <img className="action-img" alt="Cup with rolling dice" src="src/components/GameArea/assets/images/roll.png" />
       <button type="button" className="roll-button" onClick={handleClick}>&Agrave; vous d'faire</button>
     </div>
     <div className="results-zone">
