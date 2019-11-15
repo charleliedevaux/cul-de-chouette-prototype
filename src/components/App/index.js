@@ -12,6 +12,7 @@ import Rules from 'src/components/Rules';
 import Header from 'src/components/Header';
 import Scoreboard from 'src/components/Scoreboard';
 import NewGame from 'src/components/NewGame';
+import GameArea from 'src/components/GameArea';
 // Données
 // Styles et assets
 import './styles.sass';
@@ -29,6 +30,7 @@ const App = () => {
           <NewGame />
         </Route>
         <Route exact path="/game">
+          <GameArea />
           <Scoreboard />
         </Route>
         <Route>
