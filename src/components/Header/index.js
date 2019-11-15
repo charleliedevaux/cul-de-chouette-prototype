@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.sass';
 
 
-// Composant de présentation
+// Presentational Component
 const Header = () => {
   return <header className="app-header">
     <h1 className="app-header-title">

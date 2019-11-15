@@ -5,17 +5,13 @@ import { rollDice } from 'src/store/game/actions';
 import './styles.sass';
 
 
-// Stratégie de lecture depuis le store/state : on extrait des informations
-// depuis le state global de l'application.
+// Strategy to read from global state
 const mapStateToProps = (state) => {
   const { dice, currentTurn, rollStatus, results } = state.game;
   return { dice, currentTurn, rollStatus, results };
 };
 
-// Stratégie d'écriture dans le state global de l'application.
-// La fonction dispatchers retourne un objet, chaque propriété va devenir
-// un prop passée à un composant de présentation qui pourra utiliser les
-// fonctions définies pour déclencher des dispatch().
+// Strategy to write in global state
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClick: (event) => {
@@ -24,13 +20,14 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-// Composant de présentation
+// Presentational Component
 const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
 
   const firstDie = dice.firstDie;
   const secondDie = dice.secondDie;
   const thirdDie = dice.thirdDie;
 
+  // Function to create the action-zone title depending on the turn
   const actionTitle = (player) => {
     switch (player) {
       case 'firstPlayer': {
@@ -49,14 +46,19 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
   };
 
   return <div className="game-area">
+
+    {/* Action Zone (where the dice and roll button are displayed) */}
     <div className="action-zone">
       <h2 className="action-title">{actionTitle(currentTurn)}</h2>
 
+      {/* Image and roll button (before the dice are rolled) */}
       {
-      !rollStatus && <div><img className="action-img" alt="Gobelet avec dés" src="src/components/GameArea/assets/images/roll.png" />
+      !rollStatus && <div>
+        <img className="action-img" alt="Gobelet avec dés" src="src/components/GameArea/assets/images/roll.png" />
         <button type="button" className="roll-button" onClick={handleClick}>&Agrave; vous d'faire</button>
       </div>
       }
+      {/* Dice and numbers (after the dice are rolled) */}
       {
         rollStatus && <div className="dice-container">
           <div className="die">
@@ -73,8 +75,9 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
           </div>
         </div>
       }
-
     </div>
+
+    {/* Results Zone (after the dice are rolled) */}
     {rollStatus && <div className="results-zone">
       <h2 className="results-title">{results.combinationName}</h2>
       <p className="turn-score">+ {results.turnScore}pts</p>

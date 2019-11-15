@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import './styles.sass';
 
 
-// Stratégie de lecture depuis le store/state : on extrait des informations
-// depuis le state global de l'application.
+// Strategy to read from global state
 const mapStateToProps = (state) => {
   const { scores } = state.scores;
   return { 
@@ -13,7 +12,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-// Composant de présentation
+// Presentational Component
 const Scoreboard = ({ scores }) => {
   return <div className="scoreboard">
     <h2 className="scoreboard-title">Tableau des scores</h2>

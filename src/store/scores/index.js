@@ -10,6 +10,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    // Reset the scores when a new game is started
     case actions.RESET_SCORES: {
       return {
         ...state, scores: { firstPlayer: 0, secondPlayer: 0, thirdPlayer: 0 }

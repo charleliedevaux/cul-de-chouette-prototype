@@ -6,6 +6,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    // Display or hide the rules section
     case actions.TOGGLE_RULES: {
       return {
         ...state, rules: !state.rules

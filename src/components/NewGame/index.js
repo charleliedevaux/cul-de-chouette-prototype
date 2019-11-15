@@ -6,10 +6,7 @@ import { resetScores } from 'src/store/scores/actions';
 import './styles.sass';
 
 
-// Stratégie d'écriture dans le state global de l'application.
-// La fonction dispatchers retourne un objet, chaque propriété va devenir
-// un prop passée à un composant de présentation qui pourra utiliser les
-// fonctions définies pour déclencher des dispatch().
+// Strategy to write in global state
 const mapDispatchToProps = (dispatch, props) => {
   return {
     handleClick: (event) => {
@@ -19,7 +16,7 @@ const mapDispatchToProps = (dispatch, props) => {
   };
 };
 
-// Composant de présentation
+// Presentational Component
 const NewGame = ({ handleClick }) => {
   return <div className="new-game">
     <h2 className="new-game-title">S'que vous voulez qu'on se fasse un petit cul de chouette ?</h2>

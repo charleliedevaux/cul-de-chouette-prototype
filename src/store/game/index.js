@@ -10,9 +10,10 @@ const initialState = {
   rollStatus: false
 };
 
-// On renvoie un entier aléatoire entre 1 et 6.
+// Produce a random int between 1 and 6
 const randomDieNumber = () => Math.floor(Math.random() * (6)) + 1;
 
+// Function to compare the dice roll to existing combinations and generate the results
 const checkResults = (a, b, c) => {
   let results = {
     combinationName: 'Rien du tout !',
@@ -59,6 +60,7 @@ const checkResults = (a, b, c) => {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    // Roll the dice, check the results and calculate the points earned
     case actions.ROLL_DICE: {
       const firstDie = randomDieNumber();
       const secondDie = randomDieNumber();

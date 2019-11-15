@@ -1,17 +1,17 @@
 import { createStore } from 'redux';
 
 
-// Logique de stockage et de manipulation des données de l'application.
+// Logic to store and handle data
 import reducer from './reducer';
 
 
-// Création du store de l'application, avec son state privé.
+// Creating the app store with its pirvate state
 const reactModelStore = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-// Juste pour debugguer, ne pas laisser en production.
+// FIXME: Remove when in production
 window.store = reactModelStore;
 
 export default reactModelStore;

@@ -5,8 +5,7 @@ import { toggleRules } from 'src/store/settings/actions';
 import './styles.sass';
 
 
-// Stratégie de lecture depuis le store/state : on extrait des informations
-// depuis le state global de l'application.
+// Strategy to read from global state
 const mapStateToProps = (state) => {
   const { rules } = state.settings;
   return {
@@ -14,10 +13,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-// Stratégie d'écriture dans le state global de l'application.
-// La fonction dispatchers retourne un objet, chaque propriété va devenir
-// un prop passée à un composant de présentation qui pourra utiliser les
-// fonctions définies pour déclencher des dispatch().
+// Strategy to write in global state
 const mapDispatchToProps = (dispatch) => {
   return {
     handleOnClick: (event) => {
@@ -26,11 +22,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-// Composant de présentation
+// Presentational Component
 const Rules = ({ rules, handleOnClick }) => {
   return <div className="rules">
     <div className="rules-title" onClick={handleOnClick}>Les règles du jeu :</div>
 
+    {/* On click, this part is displayed or hidden */}
     { rules && <div className="rules-details">
       <blockquote className="rules-quote">
         "Ah, mais je suis bête ! Vous devez jouer avec les règles à l'Aquitaine vous..."
@@ -60,7 +57,7 @@ const Rules = ({ rules, handleOnClick }) => {
       <p>Les trois dés se suivent.</p>
       <p>Tous les joueurs doivent <span className="important-element">frapper du poing sur la table et crier "Grelotte ça picotte"</span>. Le dernier perd 10 points.</p>
     </div> }
-  
+
   </div>;
 };
 
