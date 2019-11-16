@@ -4,24 +4,26 @@ import { connect } from 'react-redux';
 import Results from 'src/components/Results';
 import TransitionCard from 'src/components/TransitionCard';
 import Dice from 'src/components/Dice';
+import EndScreen from 'src/components/EndScreen';
 import './styles.sass';
 
 
 // Strategy to read from global state
 const mapStateToProps = (state) => {
   const { currentTurn, rollStatus } = state.game;
-  return { currentTurn, rollStatus };
+  const { winner } = state.scores;
+  return { currentTurn, rollStatus, winner };
 };
 
 // Presentational Component
-const GameArea = ({ currentTurn, rollStatus }) => {
+const GameArea = ({ currentTurn, rollStatus, winner }) => {
   return <div className="game-area">
 
     {/* Action Zone (where the dice and roll button are displayed) */}
-    <div className="action-zone">
+    { winner === '' && <div className="action-zone">
       <h2 className="action-title">{currentTurn === 'Joueur 1' ? 'C\'est votre tour' : `Tour du ${currentTurn}`}</h2>
 
-      {/* Image and roll button (before the dice are rolled) */}
+      {/* Transition between rolls */}
       {
         !rollStatus && <TransitionCard />
       }
@@ -29,11 +31,17 @@ const GameArea = ({ currentTurn, rollStatus }) => {
       {
         rollStatus && <Dice />
       }
-    </div>
+      </div>
+    }
 
     {/* Results Zone (after the dice are rolled) */}
     {
       rollStatus && <Results />
+    }
+
+    {/* Endding screen */}
+    {
+      winner !== '' && <EndScreen />
     }
   </div>;
 };
