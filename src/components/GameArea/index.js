@@ -34,15 +34,15 @@ const GameArea = ({ currentTurn, rollStatus, dice }) => {
         rollStatus && <div className="dice-container">
           <div className="die">
             <img id="first-die" className="die-img" alt={`face ${firstDie} du dé`} src={`src/components/GameArea/assets/images/dark${firstDie}.png`} />
-            <p>{firstDie}</p>
+            <p className="die-number">{firstDie}</p>
           </div>
           <div className="die">
             <img id="second-die" className="die-img" alt={`face ${secondDie} du dé`} src={`src/components/GameArea/assets/images/dark${secondDie}.png`} />
-            <p>{secondDie}</p>
+            <p className="die-number">{secondDie}</p>
           </div>
           <div className="die">
             <img id="third-die" className="die-img" alt={`face ${thirdDie} du dé`} src={`src/components/GameArea/assets/images/dark${thirdDie}.png`} />
-            <p>{thirdDie}</p>
+            <p className="die-number">{thirdDie}</p>
           </div>
         </div>
       }
