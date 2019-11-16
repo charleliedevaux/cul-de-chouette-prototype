@@ -77,10 +77,10 @@ export default store => next => action => {
     case actions.NEXT_PLAYER: {
       const currentPlayer = store.getState().game.currentTurn;
       store.dispatch(changeCurrentTurn(currentPlayer));
-      // roll the dice if non-human player
+      // roll the dice if non-human player after a delay
       const nextPlayer = store.getState().game.currentTurn;
       if (nextPlayer !== 'Joueur 1') {
-        store.dispatch(rollDice());
+        setTimeout(() => store.dispatch(rollDice()), 2000);
       }
       break;
     }
