@@ -1,28 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { rollDice } from 'src/store/game/actions';
 import ResultsZone from 'src/components/ResultsZone';
+import TransitionCard from 'src/components/TransitionCard';
 import './styles.sass';
 
 
 // Strategy to read from global state
 const mapStateToProps = (state) => {
-  const { dice, currentTurn, rollStatus, results } = state.game;
-  return { dice, currentTurn, rollStatus, results };
-};
-
-// Strategy to write in global state
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleClickOnRoll: (event) => {
-      dispatch(rollDice());
-    }
-  };
+  const { dice, currentTurn, rollStatus } = state.game;
+  return { dice, currentTurn, rollStatus };
 };
 
 // Presentational Component
-const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll }) => {
+const GameArea = ({ currentTurn, rollStatus, dice }) => {
 
   const firstDie = dice.firstDie;
   const secondDie = dice.secondDie;
@@ -54,10 +45,7 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll }) => {
 
       {/* Image and roll button (before the dice are rolled) */}
       {
-        !rollStatus && <div>
-          <img className="action-img" alt="Gobelet avec dés" src="src/components/GameArea/assets/images/roll.png" />
-          <button type="button" className="roll-button" onClick={handleClickOnRoll}>&Agrave; vous d'faire</button>
-        </div>
+        !rollStatus && <TransitionCard />
       }
       {/* Dice and numbers (after the dice are rolled) */}
       {
@@ -88,7 +76,7 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll }) => {
 
 const GameAreaContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(GameArea);
 
 export default GameAreaContainer;
