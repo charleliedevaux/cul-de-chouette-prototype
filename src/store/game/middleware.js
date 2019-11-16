@@ -78,7 +78,10 @@ export default store => next => action => {
       const currentPlayer = store.getState().game.currentTurn;
       store.dispatch(changeCurrentTurn(currentPlayer));
       // roll the dice if non-human player
-      store.dispatch(rollDice());
+      const nextPlayer = store.getState().game.currentTurn;
+      if (nextPlayer !== 'firstPlayer') {
+        store.dispatch(rollDice());
+      }
       break;
     }
   }

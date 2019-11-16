@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { nextPlayer, rollDice } from 'src/store/game/actions';
+import { rollDice } from 'src/store/game/actions';
+import ResultsZone from 'src/components/ResultsZone';
 import './styles.sass';
 
 
@@ -16,15 +17,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleClickOnRoll: (event) => {
       dispatch(rollDice());
-    },
-    handleClickOnNext: (event) => () => {
-      dispatch(nextPlayer());
     }
   };
 };
 
 // Presentational Component
-const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll, handleClickOnNext, results }) => {
+const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll }) => {
 
   const firstDie = dice.firstDie;
   const secondDie = dice.secondDie;
@@ -56,10 +54,10 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll, handleClic
 
       {/* Image and roll button (before the dice are rolled) */}
       {
-      !rollStatus && <div>
-        <img className="action-img" alt="Gobelet avec dés" src="src/components/GameArea/assets/images/roll.png" />
-        <button type="button" className="roll-button" onClick={handleClickOnRoll}>&Agrave; vous d'faire</button>
-      </div>
+        !rollStatus && <div>
+          <img className="action-img" alt="Gobelet avec dés" src="src/components/GameArea/assets/images/roll.png" />
+          <button type="button" className="roll-button" onClick={handleClickOnRoll}>&Agrave; vous d'faire</button>
+        </div>
       }
       {/* Dice and numbers (after the dice are rolled) */}
       {
@@ -81,11 +79,9 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll, handleClic
     </div>
 
     {/* Results Zone (after the dice are rolled) */}
-    {rollStatus && <div className="results-zone">
-      <h2 className="results-title">{results.combinationName}</h2>
-      <p className="turn-score">+ {results.turnScore}pts</p>
-      <button type="button" className="continue-button" onClick={handleClickOnNext(currentTurn)}>Passer les dés</button>
-    </div>}
+    {
+      rollStatus && <ResultsZone />
+    }
   </div>;
 };
 

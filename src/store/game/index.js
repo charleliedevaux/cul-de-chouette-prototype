@@ -52,7 +52,8 @@ export default (state = initialState, action) => {
       }
       return {
         ...state,
-        currentTurn: newPlayer
+        currentTurn: newPlayer,
+        rollStatus: false
       };
     }
     default: {
