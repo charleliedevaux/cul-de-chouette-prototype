@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { rollDice } from 'src/store/game/actions';
+import { nextPlayer, rollDice } from 'src/store/game/actions';
 import './styles.sass';
 
 
@@ -14,14 +14,17 @@ const mapStateToProps = (state) => {
 // Strategy to write in global state
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleClick: (event) => {
+    handleClickOnRoll: (event) => {
       dispatch(rollDice());
+    },
+    handleClickOnNext: (event) => () => {
+      dispatch(nextPlayer());
     }
   };
 };
 
 // Presentational Component
-const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
+const GameArea = ({ currentTurn, rollStatus, dice, handleClickOnRoll, handleClickOnNext, results }) => {
 
   const firstDie = dice.firstDie;
   const secondDie = dice.secondDie;
@@ -55,7 +58,7 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
       {
       !rollStatus && <div>
         <img className="action-img" alt="Gobelet avec dés" src="src/components/GameArea/assets/images/roll.png" />
-        <button type="button" className="roll-button" onClick={handleClick}>&Agrave; vous d'faire</button>
+        <button type="button" className="roll-button" onClick={handleClickOnRoll}>&Agrave; vous d'faire</button>
       </div>
       }
       {/* Dice and numbers (after the dice are rolled) */}
@@ -81,7 +84,7 @@ const GameArea = ({ currentTurn, rollStatus, dice, handleClick, results }) => {
     {rollStatus && <div className="results-zone">
       <h2 className="results-title">{results.combinationName}</h2>
       <p className="turn-score">+ {results.turnScore}pts</p>
-      <button type="button" className="continue-button">Passer les dés</button>
+      <button type="button" className="continue-button" onClick={handleClickOnNext(currentTurn)}>Passer les dés</button>
     </div>}
   </div>;
 };

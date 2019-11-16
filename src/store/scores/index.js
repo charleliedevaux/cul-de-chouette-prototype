@@ -6,7 +6,6 @@ const initialState = {
     secondPlayer: 0,
     thirdPlayer: 0
   }
-  
 };
 
 export default (state = initialState, action) => {

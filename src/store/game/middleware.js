@@ -1,6 +1,7 @@
 import { game as actions } from 'src/store/actions';
-import { displayDice } from 'src/store/game/actions';
-import { updateScore } from 'src/store/scores/actions';
+import { displayDice, rollDice, changeCurrentTurn, changeGameStatus } from 'src/store/game/actions';
+import { updateScore, resetScores } from 'src/store/scores/actions';
+
 
 export default store => next => action => {
 
@@ -54,6 +55,12 @@ export default store => next => action => {
 
   console.log('middleware.game', action);
   switch (action.type) {
+    // Start a new game
+    case actions.NEW_GAME: {
+      store.dispatch(resetScores());
+      store.dispatch(changeGameStatus());
+      break;
+    }
     // Roll the dice, check the results and calculate the points earned
     case actions.ROLL_DICE: {
       const firstDie = randomDieNumber();
@@ -64,6 +71,15 @@ export default store => next => action => {
 
       store.dispatch(displayDice(firstDie, secondDie, thirdDie, results));
       store.dispatch(updateScore(currentPlayer, results.turnScore));
+      break;
+    }
+    // Skip to next player
+    case actions.NEXT_PLAYER: {
+      const currentPlayer = store.getState().game.currentTurn;
+      store.dispatch(changeCurrentTurn(currentPlayer));
+      // roll the dice if non-human player
+      store.dispatch(rollDice());
+      break;
     }
   }
   next(action);
