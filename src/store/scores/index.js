@@ -5,37 +5,36 @@ const initialState = {
     firstPlayer: 0,
     secondPlayer: 0,
     thirdPlayer: 0
-  }
+  },
+  winner: ''
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    // Reset the scores when a new game is started
+    // Update the score with data received from CHECK_SCORE
     case actions.UPDATE_SCORE: {
       const currentScore = action.currentScore;
       const currentPlayer = action.currentPlayer;
-      let newScore = 0;
+      const winner = action.winner;
 
       if (currentPlayer === 'Joueur 1') {
-        newScore = state.scores.firstPlayer + currentScore;
         return {
-          ...state, scores: { ...state.scores, firstPlayer: newScore }
+          ...state, scores: { ...state.scores, firstPlayer: currentScore }, winner
         };
       }
       if (currentPlayer === 'Joueur 2') {
-        newScore = state.scores.secondPlayer + currentScore;
         return {
-          ...state, scores: { ...state.scores, secondPlayer: newScore }
+          ...state, scores: { ...state.scores, secondPlayer: currentScore }, winner
         };
       }
       if (currentPlayer === 'Joueur 3') {
-        newScore = state.scores.thirdPlayer + currentScore;
         return {
-          ...state, scores: { ...state.scores, thirdPlayer: newScore }
+          ...state, scores: { ...state.scores, thirdPlayer: currentScore }, winner
         };
       }
       break;
     }
+    // Reset the scores when a new game is started
     case actions.RESET_SCORES: {
       return {
         ...state, scores: { firstPlayer: 0, secondPlayer: 0, thirdPlayer: 0 }

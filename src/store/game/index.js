@@ -14,7 +14,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    // Change the status of the at the start or end of a game
+    // Change the status of the game at the start or end of a game
     case actions.CHANGE_GAME_STATUS: {
       return {
         ...state,
@@ -39,6 +39,7 @@ export default (state = initialState, action) => {
         results
       };
     }
+    // Change the current player
     case actions.CHANGE_CURRENT_TURN: {
       let newPlayer = '';
       if (action.currentPlayer === 'Joueur 1') {

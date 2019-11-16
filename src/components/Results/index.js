@@ -22,8 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 
 // Presentational Component
 const Results = ({ currentTurn, results, handleClickOnNext }) => {
-  console.log('Results Zone : ', currentTurn);
-
   return <div className="results-zone">
     <h2 className="results-title">{results.combinationName}</h2>
     <p className="turn-score">+ {results.turnScore}pts</p>

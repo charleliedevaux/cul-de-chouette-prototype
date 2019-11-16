@@ -1,10 +1,9 @@
 import { game as actions } from 'src/store/actions';
 import { displayDice, rollDice, changeCurrentTurn, changeGameStatus, nextPlayer } from 'src/store/game/actions';
-import { updateScore, resetScores } from 'src/store/scores/actions';
+import { checkScore, resetScores } from 'src/store/scores/actions';
 
 
 export default store => next => action => {
-
   // Produce a random int between 1 and 6
   const randomDieNumber = () => Math.floor(Math.random() * (6)) + 1;
 
@@ -53,7 +52,6 @@ export default store => next => action => {
     return results;
   };
 
-  console.log('middleware.game', action);
   switch (action.type) {
     // Start a new game
     case actions.NEW_GAME: {
@@ -70,7 +68,7 @@ export default store => next => action => {
       const currentPlayer = store.getState().game.currentTurn;
 
       store.dispatch(displayDice(firstDie, secondDie, thirdDie, results));
-      store.dispatch(updateScore(currentPlayer, results.turnScore));
+      store.dispatch(checkScore(currentPlayer, results.turnScore));
       if (currentPlayer !== 'Joueur 1') {
         setTimeout(() => store.dispatch(nextPlayer()), 4000);
       }
