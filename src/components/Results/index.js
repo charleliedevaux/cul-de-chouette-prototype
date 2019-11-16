@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 // Presentational Component
-const ResultsZone = ({ currentTurn, results, handleClickOnNext }) => {
+const Results = ({ currentTurn, results, handleClickOnNext }) => {
   console.log('Results Zone : ', currentTurn);
 
   return <div className="results-zone">
@@ -34,9 +34,9 @@ const ResultsZone = ({ currentTurn, results, handleClickOnNext }) => {
 };
 
 
-const ResultsZoneContainer = connect(
+const ResultsContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ResultsZone);
+)(Results);
 
-export default ResultsZoneContainer;
+export default ResultsContainer;
