@@ -22,6 +22,13 @@ const mapDispatchToProps = (dispatch) => {
 
 // Presentational Component
 const TransitionCard = ({ currentTurn, handleClickOnRoll }) => {
+  let playerID = '';
+  if (currentTurn === 'Joueur 2') {
+    playerID = 'second-player-tag';
+  }
+  if (currentTurn === 'Joueur 3') {
+    playerID = 'third-player-tag';
+  }
 
   return <div>
     <img className="action-img" alt="Gobelet avec dés" src="src/components/TransitionCard/assets/images/roll.png" />
@@ -29,7 +36,11 @@ const TransitionCard = ({ currentTurn, handleClickOnRoll }) => {
       currentTurn === 'Joueur 1' && <button type="button" className="roll-button" onClick={handleClickOnRoll}>&Agrave; vous d'faire</button>
     }
     {
-      currentTurn !== 'Joueur 1' && <p className="transition-text">{currentTurn} lance les dés</p>
+      currentTurn !== 'Joueur 1' && <p className="transition-text">
+        <span className="player-tag" id={playerID}>
+          {currentTurn}
+        </span> lance les dés
+      </p>
     }
   </div>;
 };
