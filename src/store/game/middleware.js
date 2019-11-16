@@ -1,5 +1,5 @@
 import { game as actions } from 'src/store/actions';
-import { displayDice, rollDice, changeCurrentTurn, changeGameStatus } from 'src/store/game/actions';
+import { displayDice, rollDice, changeCurrentTurn, changeGameStatus, nextPlayer } from 'src/store/game/actions';
 import { updateScore, resetScores } from 'src/store/scores/actions';
 
 
@@ -71,6 +71,9 @@ export default store => next => action => {
 
       store.dispatch(displayDice(firstDie, secondDie, thirdDie, results));
       store.dispatch(updateScore(currentPlayer, results.turnScore));
+      if (currentPlayer !== 'Joueur 1') {
+        setTimeout(() => store.dispatch(nextPlayer()), 4000);
+      }
       break;
     }
     // Skip to next player
@@ -78,8 +81,8 @@ export default store => next => action => {
       const currentPlayer = store.getState().game.currentTurn;
       store.dispatch(changeCurrentTurn(currentPlayer));
       // roll the dice if non-human player after a delay
-      const nextPlayer = store.getState().game.currentTurn;
-      if (nextPlayer !== 'Joueur 1') {
+      const nextTurn = store.getState().game.currentTurn;
+      if (nextTurn !== 'Joueur 1') {
         setTimeout(() => store.dispatch(rollDice()), 2000);
       }
       break;
