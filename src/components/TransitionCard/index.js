@@ -26,6 +26,8 @@ const TransitionCard = ({ currentTurn, handleClickOnRoll }) => {
   return <div>
     <img className="action-img" alt="Gobelet avec dés" src="src/components/TransitionCard/assets/images/roll.png" />
     <button type="button" className="roll-button" onClick={handleClickOnRoll}>&Agrave; vous d'faire</button>
+
+    <p>{currentTurn} lance les dés</p>
   </div>;
 };
 

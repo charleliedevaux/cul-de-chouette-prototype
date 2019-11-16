@@ -19,29 +19,11 @@ const GameArea = ({ currentTurn, rollStatus, dice }) => {
   const secondDie = dice.secondDie;
   const thirdDie = dice.thirdDie;
 
-  // Function to create the action-zone title depending on the turn
-  const actionTitle = (player) => {
-    switch (player) {
-      case 'firstPlayer': {
-        return 'C\'est votre tour !';
-      }
-      case 'secondPlayer': {
-        return 'Tour du joueur 2';
-      }
-      case 'thirdPlayer': {
-        return 'Tour du joueur 3';
-      }
-      default: {
-        return '';
-      }
-    }
-  };
-
   return <div className="game-area">
 
     {/* Action Zone (where the dice and roll button are displayed) */}
     <div className="action-zone">
-      <h2 className="action-title">{actionTitle(currentTurn)}</h2>
+      <h2 className="action-title">{currentTurn === 'Joueur 1' ? 'C\'est votre tour' : `Tour du ${currentTurn}`}</h2>
 
       {/* Image and roll button (before the dice are rolled) */}
       {

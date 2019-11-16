@@ -14,19 +14,22 @@ export default (state = initialState, action) => {
     case actions.UPDATE_SCORE: {
       const currentScore = action.currentScore;
       const currentPlayer = action.currentPlayer;
-      const newScore = state.scores[currentPlayer] + currentScore;
+      let newScore = 0;
 
-      if (currentPlayer === 'firstPlayer') {
+      if (currentPlayer === 'Joueur 1') {
+        newScore = state.scores.firstPlayer + currentScore;
         return {
           ...state, scores: { ...state.scores, firstPlayer: newScore }
         };
       }
-      if (currentPlayer === 'secondPlayer') {
+      if (currentPlayer === 'Joueur 2') {
+        newScore = state.scores.secondPlayer + currentScore;
         return {
           ...state, scores: { ...state.scores, secondPlayer: newScore }
         };
       }
-      if (currentPlayer === 'thirdPlayer') {
+      if (currentPlayer === 'Joueur 3') {
+        newScore = state.scores.thirdPlayer + currentScore;
         return {
           ...state, scores: { ...state.scores, thirdPlayer: newScore }
         };

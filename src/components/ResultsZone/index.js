@@ -28,7 +28,7 @@ const ResultsZone = ({ currentTurn, results, handleClickOnNext }) => {
     <h2 className="results-title">{results.combinationName}</h2>
     <p className="turn-score">+ {results.turnScore}pts</p>
     {
-      /*currentTurn === 'firstPlayer' && */
+      /*currentTurn === 'Joueur 1' && */
       <button type="button" className="continue-button" onClick={handleClickOnNext()}>Passer les dés</button>
     }
   </div>;

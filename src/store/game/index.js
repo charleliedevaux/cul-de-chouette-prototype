@@ -7,7 +7,7 @@ const initialState = {
     secondDie: null,
     thirdDie: null
   },
-  currentTurn: 'firstPlayer',
+  currentTurn: 'Joueur 1',
   gameStatus: false,
   rollStatus: false
 };
@@ -41,14 +41,14 @@ export default (state = initialState, action) => {
     }
     case actions.CHANGE_CURRENT_TURN: {
       let newPlayer = '';
-      if (action.currentPlayer === 'firstPlayer') {
-        newPlayer = 'secondPlayer';
+      if (action.currentPlayer === 'Joueur 1') {
+        newPlayer = 'Joueur 2';
       }
-      if (action.currentPlayer === 'secondPlayer') {
-        newPlayer = 'thirdPlayer';
+      if (action.currentPlayer === 'Joueur 2') {
+        newPlayer = 'Joueur 3';
       }
-      if (action.currentPlayer === 'thirdPlayer') {
-        newPlayer = 'firstPlayer';
+      if (action.currentPlayer === 'Joueur 3') {
+        newPlayer = 'Joueur 1';
       }
       return {
         ...state,
