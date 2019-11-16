@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
         gameStatus: !state.gameStatus
       };
     }
-    // Roll the dice, check the results and calculate the points earned
+    // Update the dice values to display them
     case actions.DISPLAY_DICE: {
       const firstDie = action.firstDie;
       const secondDie = action.secondDie;

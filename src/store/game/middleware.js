@@ -19,31 +19,31 @@ export default store => next => action => {
         turnScore: 40 + (10 * a)
       };
     }
-    if (b + c === a) {
+    else if (b + c === a) {
       results = {
         combinationName: `Velute de ${a}`,
         turnScore: 2 * (a ** 2)
       };
     }
-    if (a + c === b) {
+    else if (a + c === b) {
       results = {
         combinationName: `Velute de ${b}`,
         turnScore: 2 * (b ** 2)
       };
     }
-    if (a + b === c) {
+    else if (a + b === c) {
       results = {
         combinationName: `Velute de ${c}`,
         turnScore: 2 * (c ** 2)
       };
     }
-    if (a === b || a === c) {
+    else if (a === b || a === c) {
       results = {
         combinationName: `Chouette de ${a}`,
         turnScore: a ** 2
       };
     }
-    if (b === c) {
+    else if (b === c) {
       results = {
         combinationName: `Chouette de ${b}`,
         turnScore: b ** 2
