@@ -14,11 +14,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    // Change the status of the game at the start or end of a game
+    // Change the status of the game at the start
     case actions.CHANGE_GAME_STATUS: {
       return {
         ...state,
-        gameStatus: !state.gameStatus
+        gameStatus: true
       };
     }
     // Update the dice values to display them
