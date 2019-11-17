@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
       document.location.reload();
     },
     handleClickOnQuit: (event) => () => {
-      dispatch();
+      document.location = '/';
     }
   };
 };
