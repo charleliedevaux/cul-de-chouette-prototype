@@ -2,9 +2,10 @@
 
 ## Prochaines tâches
 
-- améliorations de style (refonte règles, score plus gros)
-- écran de fin de partie : créer les deux méthodes et actions correspondantes
-
-## Autres tâches
-
-- complexification des cas (qcm + timer)
+- Ajout de la Suite et de la Chouette velute :
+  - interrompre la séquence normale
+  - afficher des boutons avec choix multiples (action + phrase)
+  - lancer un timer pour le joueur humain
+  - tirer une valeur au sort pour les joueurs non-humains
+  - attribuer les points au gagnant, afficher les résultats
+  - afficher un bouton pour reprendre la séquence normale si l'événement est survenu pendant le tour d'un joueur non-humain
