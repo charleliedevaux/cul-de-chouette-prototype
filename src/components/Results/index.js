@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import EndScreen from 'src/components/EndScreen';
+import Scoreboard from 'src/components/Scoreboard';
 import { nextPlayer } from 'src/store/game/actions';
 import './styles.sass';
 
@@ -24,21 +25,24 @@ const mapDispatchToProps = (dispatch) => {
 
 // Presentational Component
 const Results = ({ currentTurn, results, winner, handleClickOnNext }) => {
-  return <div className="results-zone">
-    <h2 className="results-title">{results.combinationName}</h2>
-    <p className="turn-score">+ {results.turnScore}pts</p>
+  return <div className="results-container">
+    <div className="results">
+      <h2 className="results-title">{results.combinationName}</h2>
+      <p className="turn-score">+ {results.turnScore}pts</p>
 
-    {/* Endding screen */}
-    {
-      winner !== '' && <EndScreen />
-    }
+      {/* Endding screen */}
+      {
+        winner !== '' && <EndScreen />
+      }
 
-    {/* Next Player Button */}
-    {
-      currentTurn === 'Joueur 1'
-      && winner === ''
-      && <button type="button" className="continue-button" onClick={handleClickOnNext()}>Passer les dés</button>
-    }
+      {/* Next Player Button */}
+      {
+        currentTurn === 'Joueur 1'
+        && winner === ''
+        && <button type="button" className="continue-button" onClick={handleClickOnNext()}>Passer les dés</button>
+      }
+    </div>
+    <Scoreboard />
   </div>;
 };
 
