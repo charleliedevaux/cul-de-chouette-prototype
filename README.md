@@ -2,11 +2,9 @@
 
 ## Prochaines tâches
 
-- automatisation autres joueurs (actions setTimer et Clear)
-- améliorations de style (couleurs dans l'affichage du tour, refonte règles, score plus gros)
-- écran de fin de partie
+- améliorations de style (refonte règles, score plus gros)
+- écran de fin de partie : créer les deux méthodes et actions correspondantes
 
 ## Autres tâches
 
-- animations dés et résultats
 - complexification des cas (qcm + timer)
