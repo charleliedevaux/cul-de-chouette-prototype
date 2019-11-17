@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleClickOnRestart: (event) => () => {
-      dispatch();
+      document.location.reload();
     },
     handleClickOnQuit: (event) => () => {
       dispatch();
