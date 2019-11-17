@@ -69,7 +69,9 @@ export default store => next => action => {
 
       store.dispatch(displayDice(firstDie, secondDie, thirdDie, results));
       store.dispatch(checkScore(currentPlayer, results.turnScore));
-      if (currentPlayer !== 'Joueur 1') {
+
+      const winner = store.getState().scores.winner;
+      if (winner === '' && currentPlayer !== 'Joueur 1') {
         setTimeout(() => store.dispatch(nextPlayer()), 4000);
       }
       break;
@@ -81,7 +83,7 @@ export default store => next => action => {
       // roll the dice if non-human player after a delay
       const nextTurn = store.getState().game.currentTurn;
       if (nextTurn !== 'Joueur 1') {
-        setTimeout(() => store.dispatch(rollDice()), 2000);
+        setTimeout(() => store.dispatch(rollDice()), 1000);
       }
       break;
     }

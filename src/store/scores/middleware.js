@@ -24,7 +24,7 @@ export default store => next => action => {
       const newScore = store.getState().scores.scores[playerID] + currentScore;
       // Check winning condition
       let winner = '';
-      if (newScore >= 343) {
+      if (newScore >= 15) {
         winner = currentPlayer;
       }
       // Update score
