@@ -1,8 +1,8 @@
-# Cul de Chouette To Do
+# Cul de Chouette - To Do List
 
 ## Prochaines tâches
 
-- Ajout de la Suite et de la Chouette velute :
+- Ajout de la Suite et de la Chouette velute dans les combinaisons:
   - interrompre la séquence normale
   - afficher des boutons avec choix multiples (action + phrase)
   - lancer un timer pour le joueur humain
